@@ -422,7 +422,7 @@ export interface RecurringTransaction {
   amount: number
   currency: string
   type: 'debit' | 'credit'
-  frequency: 'monthly' | 'weekly' | 'yearly'
+  frequency: 'monthly' | 'weekly' | 'biweekly' | 'yearly'
   day_of_month: number | null
   start_date: string
   end_date: string | null

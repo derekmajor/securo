@@ -221,6 +221,12 @@ def test_advance_date_weekly():
     assert _advance_date(date(2025, 12, 29), "weekly") == date(2026, 1, 5)
 
 
+def test_advance_date_biweekly():
+    assert _advance_date(date(2025, 1, 1), "biweekly") == date(2025, 1, 15)
+    # Crosses month/year boundaries: Dec 29 + 14 days -> Jan 12
+    assert _advance_date(date(2025, 12, 29), "biweekly") == date(2026, 1, 12)
+
+
 def test_advance_date_yearly():
     assert _advance_date(date(2025, 3, 15), "yearly") == date(2026, 3, 15)
     # Leap year: Feb 29 -> Feb 28 next year
@@ -295,6 +301,18 @@ def test_get_occurrences_in_range_weekly():
         range_end=date(2025, 1, 27),
     )
     assert len(occurrences) == 3  # Jan 6, 13, 20 (range_end is exclusive)
+
+
+def test_get_occurrences_in_range_biweekly():
+    occurrences = get_occurrences_in_range(
+        start=date(2025, 1, 6),
+        frequency="biweekly",
+        end_date=None,
+        range_start=date(2025, 1, 6),
+        range_end=date(2025, 2, 17),
+    )
+    # Jan 6, 20, Feb 3 (every 14 days; range_end exclusive)
+    assert occurrences == [date(2025, 1, 6), date(2025, 1, 20), date(2025, 2, 3)]
 
 
 def test_get_occurrences_in_range_empty():

@@ -724,6 +724,7 @@
     "frequency": "Frequenza",
     "monthly": "Mensile",
     "weekly": "Settimanale",
+    "biweekly": "Quindicinale",
     "yearly": "Annuale",
     "dayOfMonth": "Giorno del mese",
     "startDate": "Data di inizio",
