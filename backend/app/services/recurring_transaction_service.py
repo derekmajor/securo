@@ -143,6 +143,8 @@ def _advance_date(
     Falls back to ``current.day`` when not provided."""
     if frequency == "weekly":
         return current + timedelta(weeks=1)
+    if frequency == "biweekly":
+        return current + timedelta(weeks=2)
     target_day = intended_day if intended_day else current.day
     if frequency == "yearly":
         year = current.year + 1

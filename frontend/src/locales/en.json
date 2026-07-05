@@ -724,6 +724,7 @@
     "frequency": "Frequency",
     "monthly": "Monthly",
     "weekly": "Weekly",
+    "biweekly": "Biweekly",
     "yearly": "Yearly",
     "dayOfMonth": "Day of month",
     "startDate": "Start date",

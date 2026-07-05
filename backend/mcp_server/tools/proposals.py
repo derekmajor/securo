@@ -533,7 +533,8 @@ async def propose_create_transaction(
     description=_PROPOSAL_PREFACE + (
         "Build a preview for adding a recurring transaction / subscription "
         "(e.g. 'Netflix R$55 every month on the 10th'). Frequency is one "
-        "of weekly/monthly/yearly. For monthly use day_of_month (1-31)."
+        "of weekly/biweekly/monthly/yearly (biweekly = every 2 weeks). For "
+        "monthly use day_of_month (1-31)."
     ),
     parameters={
         "type": "object",
@@ -541,7 +542,7 @@ async def propose_create_transaction(
             "description": {"type": "string", "minLength": 1, "maxLength": 500},
             "amount": {"type": "number", "exclusiveMinimum": 0},
             "type": {"type": "string", "enum": ["debit", "credit"]},
-            "frequency": {"type": "string", "enum": ["weekly", "monthly", "yearly"]},
+            "frequency": {"type": "string", "enum": ["weekly", "biweekly", "monthly", "yearly"]},
             "day_of_month": {"type": "integer", "minimum": 1, "maximum": 31, "description": "Required for monthly"},
             "start_date": {"type": "string", "format": "date", "description": "Defaults to today"},
             "end_date": {"type": "string", "format": "date"},
@@ -648,7 +649,7 @@ async def propose_create_recurring_transaction(
             "recurring_id": {"type": "string", "format": "uuid"},
             "description": {"type": "string", "minLength": 1, "maxLength": 500},
             "amount": {"type": "number", "exclusiveMinimum": 0},
-            "frequency": {"type": "string", "enum": ["weekly", "monthly", "yearly"]},
+            "frequency": {"type": "string", "enum": ["weekly", "biweekly", "monthly", "yearly"]},
             "day_of_month": {"type": "integer", "minimum": 1, "maximum": 31},
             "end_date": {"type": "string", "format": "date"},
             "category_id": {"type": "string", "format": "uuid"},
