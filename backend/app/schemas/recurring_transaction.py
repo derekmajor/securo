@@ -11,7 +11,7 @@ class RecurringTransactionCreate(BaseModel):
     amount: Decimal
     currency: str = "USD"
     type: str  # debit, credit
-    frequency: str  # monthly, weekly, yearly
+    frequency: str  # monthly, weekly, biweekly, yearly
     day_of_month: Optional[int] = None
     start_date: _Date
     end_date: Optional[_Date] = None
